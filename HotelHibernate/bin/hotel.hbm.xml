@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping> 
+<class name="com.model.Hotel" table="hotel" >
+<id name="id">
+<generator class="increment"></generator>
+</id>
+<property name="hname" column="name" />
+<property name="location" column="location"/>
+<property name="occupiedCnt" column="occupiedAmt"/>
+<property name="numOfRoom" column="roomAvail"/>
+<list name ="rooms" cascade ="all">
+<key column="hid"></key>
+<index column="type"></index>
+<one-to-many class="com.model.Room"/>
+</list>
+</class>
+<class name="com.model.Room" table="room" >
+<id name="id">
+<generator class="increment"></generator>
+</id>
+<property name="roomNumber" column="roomNumber" />
+<property name="bedType" column="bedType"/>
+<property name="smoking" column="smoking"/>
+<property name="occupied" column="occupied"/>
+<property name="rate" column="rate"/>
+<property name="name" column="personInRoomName"/>
+</class>
+</hibernate-mapping> 
